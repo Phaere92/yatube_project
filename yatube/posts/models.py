@@ -12,6 +12,10 @@ class Group(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "group"
+        verbose_name_plural = "groups"
+
 
 class Post(models.Model):
     text = models.TextField()
@@ -27,3 +31,11 @@ class Post(models.Model):
         related_name='groups',
         blank=True, null=True
     )
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        ordering = ["-pub_date"]
+        verbose_name = "post"
+        verbose_name_plural = "posts"
